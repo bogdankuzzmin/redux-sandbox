@@ -1,17 +1,22 @@
 import React from 'react';
+import {Switch, Route} from 'react-router-dom';
 
-import Loader from '../loader';
-import ErrorIndicator from '../error-indicator';
 import {withBookstoreService} from '../hoc';
 
-const App = ({bookstoreService}) => {
-  // console.log(bookstoreService.getBooks());
+import ShopHeader from '../shop-header';
+import {CartPage, HomePage} from '../pages';
+
+const App = () => {
   return (
-    <div>
-      <h1>Hello, Motherfuckers!!!!</h1>
-      <Loader bookstoreService={bookstoreService}/>
-      <ErrorIndicator />
-    </div>
+    <main role="main" className="container">
+      <ShopHeader numItems={5} total={210} />
+      <Switch>
+        <Route path="/"
+               component={HomePage} exact />
+        <Route path="/cart"
+               component={CartPage} exact />
+      </Switch>
+    </main>
   );
 };
 
