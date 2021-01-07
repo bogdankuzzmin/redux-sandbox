@@ -14,8 +14,6 @@ class BookList extends Component {
     const {bookstoreService} = this.props;
     const data = bookstoreService.getBooks();
 
-    console.log(data);
-
     this.props.booksLoaded(data);
   }
 
@@ -23,7 +21,7 @@ class BookList extends Component {
     const {books} = this.props;
 
     return (
-      <ul>
+      <ul className="book-list">
         {
           books.map((book) => {
             return (
